@@ -1,0 +1,6 @@
+{
+    "manifest_version": 3,
+    "name": "NetworkRecorder",
+    "version": "0.1",
+    "devtools_page": "devtools.html"
+}

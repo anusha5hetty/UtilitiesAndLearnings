@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html>
+  <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+        #request_details {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        #lblRecord {
+            display: inline-block;
+            width: 140px;
+            text-align: left;
+        }​
+
+        #request_details td, #request_details th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        }
+
+        #request_details tr:nth-child(even){background-color: #f2f2f2;}
+
+        #request_details tr:hover {background-color: #ddd;}
+
+        #request_details th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #24212175;
+        color: white;
+        word-break: break-word;
+        }
+
+        .button {
+            background-color: #24212175;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius:10px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: rgb(238, 106, 106);
+        }
+
+        .button:active {
+            background-color: rgb(240, 84, 84);
+            top: 3px;
+        }
+
+        #step {
+            border-radius:5px;
+            border: 3px;
+            outline:auto;
+            height: 25px
+        }
+        
+        #recButton {
+            width: 20px;
+            height: 20px;
+            font-size: 0;
+            background-color: red;
+            border: 0;
+            border-radius: 20px;
+            margin: 0px;
+            padding: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        .notRec{
+            background-color: darkred;
+        }
+
+        .Rec{
+            animation-name: pulse;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes pulse{
+            0%{
+                box-shadow: 0px 0px 5px 0px rgba(173,0,0,.3);
+            }
+            65%{
+                box-shadow: 0px 0px 5px 13px rgba(173,0,0,.3);
+            }
+            90%{
+                box-shadow: 0px 0px 5px 13px rgba(173,0,0,0);
+            }
+        }
+
+        
+    </style>
+    <title>Basic Panel</title>
+
+  </head> 
+  <body >
+      <button id="downloadCSV" style="float: right;"><i class="fa fa-download"></i></button>
+      <div class="form-row align-items-center">
+        <button id="recButton" class="notRec"></button>
+        <label id="lblRecord" for="lblRec">Record Steps</label>
+      </div>
+
+      <!-- <input type="button" id="start" value="Start" class="button"/> -->
+    
+      <div class="form-row justify-content-center">
+        <label for="lblStep">Step Name</label>
+        <input type="search" id="step" name="step"/>
+
+        <button id="insertText" class="button">
+                Insert Step Name
+        </button>
+        <button type="button" id="btnClear" class="button" >Clear</button>
+      </div>
+
+      
+
+      <table id="request_details">
+        <tr>
+            <th>Method</th>
+            <th>URL</th>
+            <th>Path</th>
+            <th>QueryString</th>
+            <th>ContentType</th>
+        </tr>
+      </table>
+      <script src="panel.js" > </script>
+      <script src="downloadCSV.js"></script>
+  </body>
+</html>
