@@ -1,13 +1,10 @@
 from tkinter import *
 from cell import Cell
+from config import *
 
-# STOPPED DEVELOPING AT ONE HOUR
+# STOPPED DEVELOPING AT 
+# Stopped the video at 
 
-WIDTH=1440
-HEIGHT=720
-
-GRID_SIZE = 6
-# num_columns = 10
 
 def h_pcnt(percent):
     return (HEIGHT/100)*percent
@@ -43,5 +40,6 @@ for row_idx in range(GRID_SIZE):
         cell_btn_obj.grid(column=col_idx, row=row_idx)
         
 print(Cell.all_cells)
+Cell.randomize_mines(NUM_MINES)
 
 root.mainloop()
