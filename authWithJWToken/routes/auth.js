@@ -14,21 +14,22 @@ router.post('/register',
             res.status(400).send(validateRes.error)
         }
         else {
-
+            console.log("Inisde Else part 1")
             const userDetails = await User.findOne({ email: req.body.email })
 
             // Check if user exists
             if (userDetails) return res.status(400).send('User already exists')
-
+            console.log("Inisde Else part 2")
             // Hash password
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(req.body.password, salt)
-
+            console.log("Inisde Else part 3")
             // Create new user
             const reqPayload = {
                 name: req.body.name,
                 password: hashedPassword,
-                email: req.body.email
+                email: req.body.email,
+                role: req.body.role
             }
 
             const user = new User(reqPayload);
