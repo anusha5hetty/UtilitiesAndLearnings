@@ -19,7 +19,8 @@ const app = express();
 // TODO: Find Why not ?
 app.use(express.json())
 
-// createUser(process.env.SUPERADMIN_USR, process.env.SUPERADMIN_PWD, process.env.SUPERADMIN_EMAIL, process.env.SUPERADMIN_ROLE)
+
+createUser(process.env.SUPERADMIN_USR, process.env.SUPERADMIN_PWD, process.env.SUPERADMIN_EMAIL, process.env.SUPERADMIN_ROLE)
 
 
 // Import Routes

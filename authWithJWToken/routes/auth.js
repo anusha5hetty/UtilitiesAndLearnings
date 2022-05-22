@@ -2,16 +2,20 @@ const router = require('express').Router();
 const User = require('./../model/User');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const verifyToken = require('./verifyToken')
 const { registerUserReqValidation, loginReqValidation } = require('./../validations/validation.js');
 
 
-router.post('/register',
+router.post('/register', verifyToken,
     async (req, res) => {
         const validateRes = registerUserReqValidation(req.body)
+        const loggedinUser = await User.findOne({ _id: req.user._id })
 
         if (validateRes.error) {
-
             res.status(400).send(validateRes.error)
+        }
+        else if (loggedinUser.role !== 'Admin') {
+            res.status(401).send('Unauthorized user. You should be a Admin to access this.')
         }
         else {
             console.log("Inisde Else part 1")
