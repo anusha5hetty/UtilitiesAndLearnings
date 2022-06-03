@@ -44,6 +44,7 @@ const authors = [
 const BookType = new GraphQLObjectType({
     name: 'Book',
     description: "This represents the book",
+    // This is a function and not just a object because there is a loop call. BookType is referencing AuthorType and AuthorType is referencing BookType
     fields: () => ({
         // resolve is not required because the data is passed to this through RootQueryType
         id: { type: new GraphQLNonNull(GraphQLInt) },
@@ -65,7 +66,14 @@ const AuthorType = new GraphQLObjectType({
     description: "This represents the author",
     fields: {
         id: { type: new GraphQLNonNull(GraphQLInt) },
-        name: { type: new GraphQLNonNull(GraphQLString) }
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        books: {
+            type: new GraphQLList(BookType),
+            description: "List of books",
+            resolve: (author) => {
+                return books.filter(book => author.id == book.authorId)
+            }
+        }
     }
 })
 
@@ -75,10 +83,35 @@ const RootQueryType = new GraphQLObjectType({
     name: "Query",
     description: "Root Query",
     fields: () => ({
+        // To get a single book by filters.
+        // Request Payload as below
+        // {
+        //     book(id: 1) {
+        //         name
+        //     }
+        // }
+
+        book: {
+            type: BookType,
+            description: "Returns Single Book",
+            args: {
+                id: { type: GraphQLInt },
+                name: { type: GraphQLString }
+            },
+            resolve: (parent, args) => {
+                const val = books.find(book => book.id == args.id || book.name == args.name)
+                return val
+            }
+        },
         books: {
             type: new GraphQLList(BookType),
             description: "List of books",
             resolve: () => books
+        },
+        authors: {
+            type: new GraphQLList(AuthorType),
+            description: "List of books",
+            resolve: () => authors
         }
     })
 })
