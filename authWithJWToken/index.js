@@ -1,3 +1,5 @@
+// Ref: https://www.youtube.com/watch?v=2jqok-WgelI
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const express = require('express');
