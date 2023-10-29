@@ -29,17 +29,6 @@ const authors = [
     { id: 3, name: "Sydney Sheldon" }
 ]
 
-// const graphQLSchemaObj = new GraphQLSchema({
-//     query: new GraphQLObjectType({
-//         name: "HelloWorld",
-//         fields: () => ({
-//             message: {
-//                 type: GraphQLString,
-//                 resolve: () => "Hello World"
-//             }
-//         })
-//     })
-// })
 
 const BookType = new GraphQLObjectType({
     name: 'Book',
