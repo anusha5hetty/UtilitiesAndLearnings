@@ -131,3 +131,4 @@ node_modules
 *.xls
 *.xlsx
 .vscode
+/.ssh
