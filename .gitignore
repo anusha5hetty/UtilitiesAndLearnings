@@ -132,3 +132,8 @@ node_modules
 *.xlsx
 .vscode
 /.ssh
+/SmallProjectsDotNet/FastFood.Models/obj
+/SmallProjectsDotNet/FoodDeliverySystem/.vs
+/SmallProjectsDotNet/FoodDeliverySystem/obj
+/SmallProjectsDotNet/FastFood.Repository/obj
+/SmallProjectsDotNet/FastFood.Services/obj
